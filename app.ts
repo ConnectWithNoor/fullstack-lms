@@ -1,6 +1,9 @@
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+
+import { catchErrorMiddleware } from "./middleware/catch-error";
+
 require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 
 const app = express();
@@ -32,5 +35,7 @@ app.use("*", (req: Request, res: Response, next: NextFunction) => {
 	const error = new Error(`Route ${req.originalUrl} is not found`);
 	next(error);
 });
+
+app.use(catchErrorMiddleware);
 
 export { app };
