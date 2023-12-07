@@ -1,1 +1,5 @@
-1:43
+1:59
+
+// user.model.ts
+original -> courses: [{ courseId: string }];
+I did -> courses: [{ courseId: ObjectId }];
